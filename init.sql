@@ -29,7 +29,7 @@ CREATE TABLE
 -- -----------------------------------------------------
 CREATE TABLE
   IF NOT EXISTS `default_schema`.`tb_token_blacklist` (
-    `tokenblacklist_id` INT (11) NOT NULL,
+    `tokenblacklist_id` INT (11) NOT NULL AUTO_INCREMENT,
     `token` VARCHAR(512) NOT NULL,
     `createdAt` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
     `updatedAt` DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
