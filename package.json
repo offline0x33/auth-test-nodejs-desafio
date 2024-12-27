@@ -23,7 +23,7 @@
     "mysql2": "^3.9.8",
     "prettier": "^3.3.2",
     "read-markdown": "^1.0.2",
-    "sequelize": "^5.19.0",
+    "sequelize": "^6.37.5",
     "validator": "^11.1.0"
   },
   "devDependencies": {
