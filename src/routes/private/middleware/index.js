@@ -3,9 +3,14 @@ import { TokenBlacklist, User } from "../../../db/model";
 
 export default async (req, res, next) => {
   try {
-    const { Authorization } = req.headers;
+    // Normaliza a chave do cabeçalho para garantir que você obtenha o valor correto
+    const authorization = req.headers['authorization'] || req.headers['Authorization'];
 
-    const token = Authorization.replace("Bearer ", "");
+    if (!authorization) {
+      return res.status(401).json({ message: 'Acesso negado. Token não fornecido.' });
+    }
+
+    const token = authorization.replace("Bearer ", "");
 
     const verified = Jwt.verify(token);
 
