@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "compose-up": "docker-compose up -d",
     "dev": "NODE_ENV=development nodemon -r esm index.js",
     "start": "NODE_ENV=production node -r esm index.js",
     "format": "prettier --write \"src/**/*.js\"",
