@@ -9,6 +9,7 @@ User.init(
     usuario_id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
     },
     usuario_senha: { type: Sequelize.STRING },
     usuario_email: { type: Sequelize.STRING },

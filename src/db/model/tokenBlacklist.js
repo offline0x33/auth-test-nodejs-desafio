@@ -3,14 +3,12 @@ import sequelize from "..";
 
 const Model = Sequelize.Model;
 class TokenBlacklist extends Model { }
-
 TokenBlacklist.init(
   {
-    // acess colums
-
     tokenblacklist_id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
     },
     token: { type: Sequelize.STRING },
   },
