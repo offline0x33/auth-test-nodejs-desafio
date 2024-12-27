@@ -78,7 +78,9 @@
                     return response.json();
                 })
                 .then(responseData => {
-                    console.log('Resposta da API:', responseData);
+                    if (responseData.code === 0) {
+                        alert(responseData.message);
+                    }
                     // Atualizar a div com os dados retornados
                     document.getElementById('usuario_email').textContent = `Email: ${responseData.userInfo.uEmail.email}`;
                     document.getElementById('usuario_nome').textContent = `Nome: ${responseData.userInfo.uNome}`;
@@ -111,10 +113,10 @@
                 .then(responseData => {
                     console.log('Resposta da API:', responseData);
                     // Atualizar a div com os dados retornados
-                    localStorage.removeItem('token'); // Se você armazenou apenas o token
+                    // localStorage.removeItem('token'); // Se você armazenou apenas o token
 
                     // Redireciona o usuário (opcional)
-                    window.location.href = '/loginpage'; // Ou para a página inicial: '/'
+                    // window.location.href = '/loginpage'; // Ou para a página inicial: '/'
                 })
                 .catch(error => {
                     console.error('Erro:', error);
