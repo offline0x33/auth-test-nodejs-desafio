@@ -35,9 +35,13 @@ export default async (req, res, next) => {
 
     if (!user) return res.send({ code: 0, message: "Usuário não encontrado." });
 
+    // console.log(user.dataValues);
 
-    req.user = user;
+    console.log("Token verificado" + JSON.stringify(verified));
+
+    req.user = user.dataValues;
     req.token = verified;
+    req.jwt = token;
 
     next();
   } catch {
