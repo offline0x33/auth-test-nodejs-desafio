@@ -54,7 +54,7 @@ cd authentication
 
 ### Crie um arquivo .env no diretório raiz e adicione suas variáveis:
 
-# Example .env file
+### Example .env file
 DB_HOST=localhost
 DB_USER=root
 DB_PASS=s1mpl3
@@ -124,7 +124,7 @@ dentro do arquivo docker-compose.yml você pode encontrar dados para acessar o b
    - DB_DATABASE: Nome do banco de dados
    - JWT_SECRET: Chave secreta do JWT
 
-## 📦 Dependências
+### 📦 Dependências
 Principais
 
    - authenticator: ^1.1.5
