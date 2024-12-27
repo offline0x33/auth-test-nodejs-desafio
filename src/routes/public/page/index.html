@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            align-self: center;
+        }
+
+        .divwrapper {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <form onsubmit="return validateForm()" id="meuFormulario">
+        <p>Criar uma nova conta.</p>
+        <input type="text" name="usuario_nome" placeholder="Nome" required><br>
+        <input type="email" name="usuario_email" placeholder="Email" required><br>
+        <input type="password" name="usuario_senha" placeholder="Password" required><br>
+        <button type="submit">Cadastrar</button>
+    </form>
+    <div class="divwrapper">
+        <p>Já tenho uma conta!</p>
+        <button type="button" onclick="window.location.href='/loginpage'">Login</button>
+    </div>
+    <script>
+        function validateForm() {
+            const nome = document.querySelector('input[name="usuario_nome"]').value;
+            const email = document.querySelector('input[name="usuario_email"]').value;
+            const password = document.querySelector('input[name="usuario_senha"]').value;
+
+            // Valida Nome
+            if (password.length < 5) {
+                alert('O nome deve ter pelo menos 5 caracteres.');
+                return false;
+            }
+
+            // Validar email
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Por favor, insira um email válido.');
+                return false;
+            }
+
+            // Máscara de senha (exemplo simples de validação)
+            if (password.length < 10) {
+                alert('A senha deve ter pelo menos 10 caracteres.');
+                return false;
+            }
+
+            return true;
+        }
+
+        const form = document.getElementById('meuFormulario');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
+
+            const jsonData = JSON.stringify(data);
+
+            fetch('/register', { // Substitua pela sua rota no servidor
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: jsonData
+            })
+                .then(response => response.json()) // ou response.text() se o servidor não retornar JSON
+                .then(responseData => {
+                    console.log('Resposta do servidor:', responseData);
+                    // Processar a resposta do servidor (ex: exibir uma mensagem de sucesso)
+                    alert("Dados enviados com sucesso!");
+                    form.reset(); //Limpa o form
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar os dados:', error);
+                    // Tratar erros (ex: exibir uma mensagem de erro ao usuário)
+                    alert("Erro ao enviar os dados. Tente novamente mais tarde.");
+                });
+        });
+    </script>
+</body>
+
+</html>
