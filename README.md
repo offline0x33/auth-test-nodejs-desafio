@@ -41,7 +41,7 @@ git clone https://github.com/seuusuario/authentication.git
 cd authentication
 ```
 
-###  Execute nvm para ajustar a versao do nodejs
+###  Execute nvm para ajustar a versao do nodejs que se encontra no arquivo .nvmrc
 ```sh
     nvm use
 ```
@@ -55,6 +55,7 @@ cd authentication
 ### Crie um arquivo .env no diretório raiz e adicione suas variáveis:
 
 ### Example .env file
+```sh
 DB_HOST=localhost
 DB_USER=root
 DB_PASS=s1mpl3
@@ -63,6 +64,7 @@ JWT_SECRET=your_jwt_secret
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
+```
 
 ### Suba a base dados MariaDB no container docker
 
