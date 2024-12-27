@@ -113,10 +113,10 @@
                 .then(responseData => {
                     console.log('Resposta da API:', responseData);
                     // Atualizar a div com os dados retornados
-                    // localStorage.removeItem('token'); // Se você armazenou apenas o token
+                    localStorage.removeItem('token'); // Se você armazenou apenas o token
 
                     // Redireciona o usuário (opcional)
-                    // window.location.href = '/loginpage'; // Ou para a página inicial: '/'
+                    window.location.href = '/'; // Ou para a página inicial: '/'
                 })
                 .catch(error => {
                     console.error('Erro:', error);
